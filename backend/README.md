@@ -76,7 +76,7 @@ Success
 
 ```json
 {
-  "success": True,
+  "success": true,
   "message": "",
   "data": [
     {
@@ -91,7 +91,7 @@ Fail
 
 ```json
 {
-  "success": False,
+  "success": false,
   "message": "Error message",
   "data": []
 }
@@ -115,7 +115,7 @@ Success
 
 ```json
 {
-  "success": True,
+  "success": true,
   "message": "",
   "data": [
     {
@@ -132,7 +132,7 @@ Success
       "url": "https://xxxx.com/query_param",
       "shortened_url": "https://example.com/xxxxxxx",
       "datetime_created": "09/06/2021 11:45:01"
-    },
+    }
   ]
 }
 ```
@@ -141,7 +141,7 @@ Fail
 
 ```json
 {
-  "success": False,
+  "success": false,
   "message": "Error message",
   "data": []
 }
@@ -173,7 +173,7 @@ Success
 
 ```json
 {
-  "success": True,
+  "success": true,
   "message": "",
   "data": [
     {
@@ -195,7 +195,7 @@ Fail
 
 ```json
 {
-  "success": False,
+  "success": false,
   "message": "Error message",
   "data": []
 }
@@ -227,7 +227,7 @@ Success
 
 ```json
 {
-  "success": True,
+  "success": true,
   "message": "",
   "data": [
     {
@@ -249,7 +249,7 @@ Fail
 
 ```json
 {
-  "success": False,
+  "success": false,
   "message": "Error message",
   "data": []
 }
