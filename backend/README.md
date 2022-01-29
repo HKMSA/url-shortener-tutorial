@@ -103,7 +103,7 @@ Fail
 
 ### Endpoint
 
-    /stats/
+    /stats
 
 ### Request Method
 
@@ -261,7 +261,7 @@ Fail
 
 ### Endpoint
 
-    /redirect/{url_hash}
+    /{url_hash}
 
 ### Request Method
 
@@ -271,9 +271,9 @@ Fail
 
 URL Param
 
-| Name     | Type   | Desc                                        |
-| -------- | ------ | ------------------------------------------- |
-| url_hash | string | 7 characters hash, e.g. "/redirect/aBc1234" |
+| Name     | Type   | Desc                               |
+| -------- | ------ | ---------------------------------- |
+| url_hash | string | 7 characters hash, e.g. "/aBc1234" |
 
 ### Response
 
