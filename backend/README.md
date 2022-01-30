@@ -72,28 +72,24 @@ JSON body
 
 ### Response
 
-Success
+201
 
 ```json
 {
-  "success": true,
   "message": "",
-  "data": [
-    {
-      "url": "https://xxxx.com/query_param",
-      "shorten_url": "https://example.com/xXyYzZ"
-    }
-  ]
+  "data": {
+    "original_url": "https://xxxx.com/query_param",
+    "shortened_url": "https://example.com/xXyYzZ"
+  }
 }
 ```
 
-Fail
+400
 
 ```json
 {
-  "success": false,
   "message": "Error message",
-  "data": []
+  "data": {}
 }
 ```
 
@@ -111,11 +107,10 @@ Fail
 
 ### Response
 
-Success
+200
 
 ```json
 {
-  "success": true,
   "message": "",
   "data": [
     {
@@ -137,11 +132,10 @@ Success
 }
 ```
 
-Fail
+404
 
 ```json
 {
-  "success": false,
   "message": "Error message",
   "data": []
 }
@@ -153,7 +147,7 @@ Fail
 
 ### Endpoint
 
-    /stats/{url_hash}
+    /stats/{hash}
 
 ### Request Method
 
@@ -163,39 +157,35 @@ Fail
 
 URL Param
 
-| Name     | Type   | Desc                                     |
-| -------- | ------ | ---------------------------------------- |
-| url_hash | string | 7 characters hash, e.g. "/stats/aBc1234" |
+| Name | Type   | Desc                                     |
+| ---- | ------ | ---------------------------------------- |
+| hash | string | 7 characters hash, e.g. "/stats/aBc1234" |
 
 ### Response
 
-Success
+200
 
 ```json
 {
-  "success": true,
   "message": "",
-  "data": [
-    {
-      "url": "https://xxxx.com/query_param",
-      "shortened_url": "https://example.com/aBc1234",
-      "datetime_created": "09/06/2021 11:45:01",
-      "number_of_clicks": 3,
-      "datetime_accessed": [
-        "09/06/2021 11:44:56",
-        "09/06/2021 11:45:00",
-        "09/06/2021 11:45:01"
-      ]
-    }
-  ]
+  "data": {
+    "url": "https://xxxx.com/query_param",
+    "shortened_url": "https://example.com/aBc1234",
+    "datetime_created": "09/06/2021 11:45:01",
+    "number_of_clicks": 3,
+    "datetime_accessed": [
+      "09/06/2021 11:44:56",
+      "09/06/2021 11:45:00",
+      "09/06/2021 11:45:01"
+    ]
+  }
 }
 ```
 
-Fail
+404
 
 ```json
 {
-  "success": false,
   "message": "Error message",
   "data": []
 }
@@ -223,35 +213,31 @@ JSON body
 
 ### Response
 
-Success
+200
 
 ```json
 {
-  "success": true,
   "message": "",
-  "data": [
-    {
-      "url": "https://xxxx.com/query_param",
-      "shortened_url": "https://example.com/zzzzzzz",
-      "datetime_created": "09/06/2021 11:45:01",
-      "number_of_clicks": 3,
-      "datetime_accessed": [
-        "09/06/2021 11:44:56",
-        "09/06/2021 11:45:00",
-        "09/06/2021 11:45:01"
-      ]
-    }
-  ]
+  "data": {
+    "url": "https://xxxx.com/query_param",
+    "shortened_url": "https://example.com/zzzzzzz",
+    "datetime_created": "09/06/2021 11:45:01",
+    "number_of_clicks": 3,
+    "datetime_accessed": [
+      "09/06/2021 11:44:56",
+      "09/06/2021 11:45:00",
+      "09/06/2021 11:45:01"
+    ]
+  }
 }
 ```
 
-Fail
+404
 
 ```json
 {
-  "success": false,
   "message": "Error message",
-  "data": []
+  "data": {}
 }
 ```
 
@@ -277,11 +263,11 @@ URL Param
 
 ### Response
 
-Success
+302
 
 > Will be redirected to original URL
 
-Fail
+400
 
 > Will return a blank page
 
