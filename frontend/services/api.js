@@ -34,9 +34,7 @@ const apiService = (() => {
         getStatByOriginalUrl: (url) =>
             httpInstance.post(`${urls.STATS_ENDPOINT}/find`, { url }),
         redirectByHash: (hash) =>
-            httpInstance
-                .get(`${urls.REDIRECT_URL_ENDPOINT}/${hash}`)
-                .then((response) => response),
+            httpInstance.get(`${urls.REDIRECT_URL_ENDPOINT}/${hash}`),
         getApiHealthCheck: () => httpInstance.get(urls.HEALTH_CHECK_ENDPOINT),
         post: httpInstance.post,
         get: httpInstance.get,
