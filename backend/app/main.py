@@ -68,29 +68,29 @@ def healthcheck():
   content = {"status": "OK"}
   return JSONResponse(content=content, headers=HEADERS)
 
-@app.post("/shorten", tags=["URL"], response_class=JSONResponse)
-def shorten_url(request:schema.URLRequestSchema = Body(...,examples=schema.URLRequestSchema.Example.examples)) -> JSONResponse:
+@app.post("/shorten", tags=["URL"], response_class=JSONResponse, response_model=schema.ShortenResponse, status_code=status.HTTP_201_CREATED)
+def shorten_url(request:schema.ShortenRequest = Body(...,examples=schema.ShortenRequest.Example.examples)) -> JSONResponse:
   args = request.dict()
   status_code, content = url_short.shorten(args, hashids)
   return JSONResponse(content=content, headers=HEADERS, status_code=status_code)
 
-@app.get("/stats",tags=["Getting stats"], response_class=JSONResponse)
+@app.get("/stats",tags=["Getting stats"], response_class=JSONResponse, response_model=schema.StatsResponse, status_code=status.HTTP_200_OK)
 def get_all() -> JSONResponse:
   status_code, content = url_short.get_all()
   return JSONResponse(content=content, headers=HEADERS, status_code=status_code)
 
-@app.get("/stats/{hash}",tags=["Getting stats"], response_class=JSONResponse)
+@app.get("/stats/{hash}",tags=["Getting stats"], response_class=JSONResponse, response_model=schema.StatsByHashResponse, status_code=status.HTTP_200_OK)
 def get_stats_by_hash(hash:str) -> JSONResponse:
   status_code, content = url_short.get_stats_by_hash(hash)
   return JSONResponse(content=content, headers=HEADERS, status_code=status_code)
 
-@app.post("/stats/find",tags=["Getting stats"], response_class=JSONResponse)
-def get_stats_by_original_url(request:schema.URLRequestSchema = Body(..., examples=schema.URLRequestSchema.Example.examples)) -> JSONResponse:
+@app.post("/stats/find",tags=["Getting stats"], response_class=JSONResponse, response_model=schema.StatsByOriginalUrlResponse, status_code=status.HTTP_200_OK)
+def get_stats_by_original_url(request:schema.StatsByOriginalUrlRequest = Body(...,examples=schema.StatsByOriginalUrlRequest.Example.examples)) -> JSONResponse:
   args = request.dict()
   status_code, content = url_short.get_stats_by_original_url(args)
   return JSONResponse(content=content, headers=HEADERS, status_code=status_code)
 
-@app.get("/{hash}", tags=["Redirect"], response_class=RedirectResponse)
+@app.get("/{hash}", tags=["Redirect"], response_class=RedirectResponse, status_code=status.HTTP_307_TEMPORARY_REDIRECT)
 def redirect(hash:str) -> RedirectResponse:
   return RedirectResponse(url_short.redirect(hash))
 
